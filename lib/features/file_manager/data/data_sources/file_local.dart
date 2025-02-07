@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 class FileLocalData {
@@ -24,4 +22,41 @@ class FileLocalData {
     await file.writeAsString(content);
   }
   
+   Future<List<FileSystemEntity>> sortFiles(
+      String directoryPath, String typeSort) async {
+    final files = await getFiles(directoryPath);
+
+    if (typeSort == 'name') {
+      files.sort((a, b) => a.path.compareTo(b.path));
+    } else if (typeSort == 'date') {
+      files.sort((a, b) {
+        final aStat = a.statSync();
+        final bStat = b.statSync();
+        return aStat.modified.compareTo(bStat.modified);
+      });
+    } else if (typeSort == 'size') {
+      files.sort((a, b) {
+        if (a is File && b is File) {
+          return a.lengthSync().compareTo(b.lengthSync());
+        }
+        return 0;
+      });
+    }
+
+    return files;
+  }
+
+   Future<List<FileSystemEntity>> filterFiles(
+      String directoryPath, String typeFilter) async {
+    final files = await getFiles(directoryPath);
+    if (typeFilter.startsWith('.')) {
+      return files.where((file) => file.path.endsWith(typeFilter)).toList();
+    }
+    if (typeFilter == 'files') {
+      return files.whereType<File>().toList();
+    } else if (typeFilter == 'folders') {
+      return files.whereType<Directory>().toList();
+    }
+    return [];
+  }
 }
