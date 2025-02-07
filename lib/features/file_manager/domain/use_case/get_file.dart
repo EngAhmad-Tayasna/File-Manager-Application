@@ -1,6 +1,6 @@
 
-import 'package:file_manager_application/features/file_manager/domin/entities/file_entity.dart';
-import 'package:file_manager_application/features/file_manager/domin/repository/file_repository.dart';
+import 'package:file_manager_application/features/file_manager/domain/entities/file_entity.dart';
+import 'package:file_manager_application/features/file_manager/domain/repository/file_repository.dart';
 
 class GetFile {
 

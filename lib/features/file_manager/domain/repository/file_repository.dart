@@ -1,5 +1,5 @@
 
-import 'package:file_manager_application/features/file_manager/domin/entities/file_entity.dart';
+import 'package:file_manager_application/features/file_manager/domain/entities/file_entity.dart';
 
 abstract class FileRepository {
 

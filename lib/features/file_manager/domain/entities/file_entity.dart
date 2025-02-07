@@ -2,7 +2,7 @@
 class FileEntity { 
   final String name;
   final bool isDirectory;
-  final double size;
+  final int size;
   final DateTime lastModified;
 
   FileEntity({
