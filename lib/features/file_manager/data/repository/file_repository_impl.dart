@@ -37,4 +37,33 @@ class FileRepositoryImpl implements FileRepository {
       );
     }).toList();
   }
+  
+  @override
+  Future<List<FileEntity>> filterFiles(String directoryPath, String typeFilter) async {
+    final files = await fileLocalData.filterFiles(directoryPath, typeFilter);
+    return files.map((file) {
+      final stats = file.statSync();
+      return FileEntity(
+        name: file.uri.pathSegments.last,
+        isDirectory: file is Directory,
+        size: stats.size,
+        lastModified: stats.modified,
+      );
+    }).toList();
+   }
+  
+  @override
+  Future<List<FileEntity>> sortFiles(String directoryPath, String typeSort) async {
+    final files = await fileLocalData.sortFiles(directoryPath, typeSort);
+    return files.map((file) {
+      final stats = file.statSync();
+      return FileEntity(
+        name: file.uri.pathSegments.last,
+        isDirectory: file is Directory,
+        size: stats.size,
+        lastModified: stats.modified,
+      );
+    }).toList();
+  }
+
 }
