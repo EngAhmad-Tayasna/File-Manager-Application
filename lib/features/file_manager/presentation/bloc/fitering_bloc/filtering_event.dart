@@ -8,8 +8,12 @@ sealed class FilteringEvent extends Equatable {
 }
 
 class FilterFileEvent extends FilteringEvent {
+  final String directoryPath;
   final String typeFilter;
-  const FilterFileEvent({required this.typeFilter});
+  const FilterFileEvent({
+    required this.typeFilter,
+    required this.directoryPath,
+  });
   @override
   List<Object> get props => [typeFilter];
 }

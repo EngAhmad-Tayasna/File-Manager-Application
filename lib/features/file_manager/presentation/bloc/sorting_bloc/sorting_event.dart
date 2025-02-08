@@ -9,8 +9,10 @@ sealed class SortingEvent extends Equatable {
 
 
 class SortFileEvent extends SortingEvent {
+  final String directoryPath ;
   final String typeSort;
-  const SortFileEvent({required this.typeSort});
+  const SortFileEvent( {required this.typeSort , required this.directoryPath,
+  });
   @override
   List<Object> get props => [typeSort];
 }

@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:equatable/equatable.dart';
+import 'package:file_manager_application/features/file_manager/domain/entities/file_entity.dart';
 import 'package:file_manager_application/features/file_manager/presentation/bloc/get_files_bloc/get_files_event.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'get_files_state.dart';
